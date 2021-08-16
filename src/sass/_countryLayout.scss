@@ -1,0 +1,36 @@
+.country_title {
+  padding-top: 58px;
+  text-align: center;
+  margin-bottom: 48px;
+}
+.country_entires {
+  display: flex;
+}
+.countries_list {
+  padding: 20px;
+}
+.countries_list__item:not(:last-child) {
+  margin-bottom: 7px;
+}
+.country_flag {
+  margin-left: auto;
+  width: 320px;
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.5));
+}
+.country_entires__item {
+  font-size: 25px;
+  font-weight: 700;
+  &:not(:last-child) {
+    margin-bottom: 31px;
+  }
+}
+.country_entires__value {
+  font-size: 25px;
+  font-weight: 400;
+}
+.country_language_list {
+  list-style-type: initial;
+  padding-top: 16px;
+  font-size: 24px;
+  font-weight: 400;
+}
