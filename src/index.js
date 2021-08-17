@@ -54,6 +54,7 @@ function createMarkup(data) {
     else if (data.length > 1 && data.length <= 10) {
         markup = listTemplate(data)
         refs.countryList.innerHTML = markup;
+         refs.target.innerHTML = '';
     } 
     else {
         error({
