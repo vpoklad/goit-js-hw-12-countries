@@ -9,9 +9,17 @@
 .countries_list {
   padding: 20px;
 }
-.countries_list__item:not(:last-child) {
-  margin-bottom: 7px;
+.countries_list__item {
+  &:hover {
+    font-weight: 700;
+    color: #274627;
+    cursor: pointer;
+  }
+  &:not(:last-child) {
+    margin-bottom: 7px;
+  }
 }
+
 .country_flag {
   margin-left: auto;
   width: 320px;
