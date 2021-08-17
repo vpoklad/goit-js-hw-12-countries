@@ -8,11 +8,11 @@ import listTemplate from './templates/list';
 import countryTeplate from './templates/country_entires';
 import countryFromListTeplate from './templates/countryFromList';
 
-import {error, defaultModules } from '../node_modules/@pnotify/core/dist/PNotify.js';
-import * as PNotifyMobile from '../node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
+import {error, notice } from '../node_modules/@pnotify/core/dist/PNotify.js';
+
 
 const debounce = require('lodash.debounce');
-  defaultModules.set(PNotifyMobile, {});
+  
 
 const refs = {
     input: document.querySelector('.inputJS'),
@@ -27,10 +27,10 @@ refs.input.addEventListener('input', debounce(onTextInput, 700));
 refs.countryList.addEventListener('click',OnlistClick)
 
 function OnlistClick(e) {
-    if (event.target.nodeName !== "LI") return;
+    if (e.target.nodeName !== "LI") return;
 markup = ''
     searchQuery = e.target.dataset.code;
-    console.log(searchQuery);
+    
 fetchFromListCountries(searchQuery).then(createMarkupfromList) 
 
     
@@ -55,14 +55,15 @@ function createMarkup(data) {
         markup = listTemplate(data)
         refs.countryList.innerHTML = markup;
          refs.target.innerHTML = '';
-    } 
-    else {
-        error({
+    }
+    else if (data.length > 10) {
+         notice({
         title: 'Too many matches found.',
             text: 'Please enter a more specific query!',
-    delay: 1000
+    delay: 2000
   });
     }
+
 
 }
 
