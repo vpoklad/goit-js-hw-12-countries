@@ -1,7 +1,12 @@
 import './sass/main.scss';
+import '../node_modules/@pnotify/core/BrightTheme.css';
 import listTemplate from './templates/list';
 import countryTeplate from './templates/country_entires';
-let debounce = require('lodash.debounce');
+
+import {error, defaultModules } from '../node_modules/@pnotify/core/dist/PNotify.js';
+import * as PNotifyMobile from '../node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
+const debounce = require('lodash.debounce');
+  defaultModules.set(PNotifyMobile, {});
 
 const refs = {
     input: document.querySelector('.inputJS'),
@@ -27,7 +32,10 @@ function onTextInput(e) {
         markup = listTemplate(data)
     } 
     else {
-    console.log('alert');
+        error({
+        title: 'Too many matches found.',
+    text: 'Please enter a more specific query!'
+  });
     }
     
     refs.target.innerHTML = markup;
