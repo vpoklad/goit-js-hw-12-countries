@@ -31,15 +31,25 @@ function OnlistClick(e) {
 markup = ''
     searchQuery = e.target.dataset.code;
     
-fetchFromListCountries(searchQuery).then(createMarkupfromList) 
+fetchFromListCountries(searchQuery).then(createMarkupfromList).catch(error => console.log(error))
 
     
 }
 
 function onTextInput(e) {
+    if (e.target.value.trim()) {
+       searchQuery = e.target.value; 
+    }
+    else {
+        return
+    }
+     
+
     markup = '';
-    searchQuery = e.target.value;
-    fetchCountries(searchQuery).then(createMarkup)  
+    
+    fetchCountries(searchQuery.trim())
+    .then(createMarkup)
+    .catch(error => console.log(error))
     
 }
     
@@ -49,6 +59,8 @@ function createMarkup(data) {
     if (data.length === 1) {
         markup = countryTeplate(data);
         refs.target.innerHTML = markup;
+        refs.countryList.innerHTML = '';
+        refs.input.value =''
     }
 
     else if (data.length > 1 && data.length <= 10) {

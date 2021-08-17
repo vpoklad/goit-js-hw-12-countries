@@ -8,14 +8,14 @@ export default function fetchCountries(searchQuery) {
         error({
       title: 'Error! No match.',
       text: 'Please check your spell!',
-           delay: 2000,
+           delay: 1000,
       icon: true
         });         
       }
 
       
-      return response.json()
-   }) 
+      return response.json().catch(error => console.log(error)) 
+   })
     
 }
 // error({

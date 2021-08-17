@@ -1,5 +1,4 @@
 .country_title {
-  padding-top: 58px;
   text-align: center;
   margin-bottom: 48px;
 }
@@ -7,7 +6,8 @@
   display: flex;
 }
 .countries_list {
-  padding: 20px;
+  margin: 0;
+  padding-left: 20px;
 }
 .countries_list__item {
   &:hover {
